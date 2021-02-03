@@ -10,8 +10,9 @@ $factory->define(App\Post::class, function (Faker $faker) {
 
     
     return [
-    //    'category_id' => $faker->randomDigitNot(200),
+       'category_id' => $faker->numberBetween( 1 , 200),
        'title' => $faker->word(),
        'author' => $faker->name(),
+       
     ];
 });

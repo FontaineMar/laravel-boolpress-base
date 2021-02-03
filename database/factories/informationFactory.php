@@ -10,9 +10,9 @@ $factory->define(App\Information::class, function (Faker $faker) {
 
 
     return [
-    //    'post_id' => $faker->randomDigitNot(),
-       'description' => $faker->paragraph(),
-       'slug' => $faker->slug(),
+        'post_id' => $faker->numberBetween( 1 , 200),
+        'description' => $faker->paragraph(),
+        'slug' => $faker->slug(),
     ];
 });
 
