@@ -10,7 +10,7 @@ $factory->define(App\Information::class, function (Faker $faker) {
 
 
     return [
-        'post_id' => $faker->numberBetween( 1 , 200),
+        'post_id' => $faker->unique->numberBetween( 1 , 100),
         'description' => $faker->paragraph(),
         'slug' => $faker->slug(),
     ];

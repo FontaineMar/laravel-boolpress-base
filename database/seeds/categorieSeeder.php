@@ -12,7 +12,7 @@ class categorieSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Categorie::class, 200)->create()->each(function ($el){
+        factory(App\Categorie::class, 10)->create()->each(function ($el){
             $el->save();
         });
     }

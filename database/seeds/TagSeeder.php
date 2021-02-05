@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Information;
+use App\Tag;
 
-class informationSeeder extends Seeder
+
+class TagSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +13,7 @@ class informationSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Information::class,100)->create()->each(function ($el){
+        factory(App\Tag::class, 20)->create()->each(function ($el){
             $el->save();
         });
     }

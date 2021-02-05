@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePostsCategoriesInformationTable extends Migration
+class CategoryPostInformation extends Migration
 {
     /**
      * Run the migrations.
@@ -36,6 +36,21 @@ class CreatePostsCategoriesInformationTable extends Migration
             $table->timestamps();
         });
 
+        Schema::create('tags', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->timestamps();
+        });
+        
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('post_id');
+            $table->unsignedBigInteger('tag_id');
+            $table->foreign('post_id')->references('id')->on('posts');
+            $table->foreign('tag_id')->references('id')->on('tags');
+            $table->timestamps();
+           
+        });
     }
 
     /**
@@ -45,6 +60,6 @@ class CreatePostsCategoriesInformationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts_categories_information');
+        //
     }
 }
