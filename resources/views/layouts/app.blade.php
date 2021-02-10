@@ -71,7 +71,13 @@
                 </div>
             </div>
         </nav>
-
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <h1>Film</h1>
+                <a class="navbar-brand" href="{{route('boolpress.index')}}">Lista Post</a>
+                <a class="navbar-brand" href="{{route('boolpress.create')}}">Crea</a>
+            </div>
+        </nav>
         <main class="py-4">
             @yield('content')
         </main>
