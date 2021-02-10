@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 use App\Post;
 use App\Categorie;
@@ -17,7 +18,11 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct()
+    {
+        $this->middleware('auth', ['except' => ['index']]);
+    }
+   
      public function index()
     {
         
@@ -33,9 +38,13 @@ class PostsController extends Controller
      */
     public function create()
     {
+
+        
         $category = Categorie::all();
         $tags = Tag::all();
         return view('boolpress.create' , compact('category', 'tags'));
+       
+        
     }
 
     /**
@@ -131,9 +140,10 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        
-        Information::destroy($id);
-        Post::destroy($id);
+        $post = Post::find($id);
+        $post->tags()->detach();
+        $post->information()->delete();
+        $post->delete();
 
         
            return redirect()->route('boolpress.index');
